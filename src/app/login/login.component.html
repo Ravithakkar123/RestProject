@@ -1,0 +1,46 @@
+
+<div class="login-page">
+  <h1>Welcome to Foodwoodz </h1>
+  <div class="container">
+    <div class="row">
+      <div class="login-page-div text-center">
+        <h2 class="text-center mb-2">Login</h2>
+        <ng-container *ngIf="loginOptionValue == 'user'">
+
+          <form [formGroup]="loginForm">
+            <div class="form-group">
+              <label>Enter Email Id:</label>
+              <input type="text"  formControlName="email" [ngClass]="{ 'is-invalid':  f.email.errors }"  class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label>Enter Password:</label>
+              <input type="password" formControlName="password" [ngClass]="{ 'is-invalid':  f.password.errors }" class="form-control" id="pwd" placeholder="Password">
+            </div>
+          </form>
+          <button class="btn btn-primary w-100 mt-sm-3" (click)="login(loginForm.value)"             [disabled]= "isDisable || loginForm.invalid" >User Login</button>
+        </ng-container>
+        <ng-container *ngIf="loginOptionValue == 'shop'">
+
+          <form [formGroup]="shopLoginForm">
+            <div class="form-group">
+              
+              <label>Enter Email Id:</label>
+              <input type="email"  formControlName="email" [ngClass]="{ 'is-invalid':  s.email.errors }"  class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              
+              <label>Enter Password:</label>
+              <input type="password" formControlName="password" [ngClass]="{ 'is-invalid':  s.password.errors }" class="form-control" id="pwd" placeholder="Password">
+            </div>
+            <button class="btn btn-primary w-100 mt-sm-3" (click)="shopLogin(shopLoginForm.value)" [disabled]= "isDisable || shopLoginForm.invalid" >Shop Login</button>
+          </form>
+        </ng-container>
+        <small *ngIf="isError"  class="text-danger"  >{{errorMessage}}</small>
+        <button class="btn btn-primary w-100 mt-sm-3" *ngIf="loginOptionValue == 'shop' || !loginOptionValue" (click)="checkLogin('user')">User Login</button>
+        <button class="btn btn-primary w-100 mt-sm-3" *ngIf="loginOptionValue == 'user' || !loginOptionValue" (click)="checkLogin('shop')">Shop Login</button>
+        <small class="text-muted" style="cursor: pointer"  routerLink='/register'>Sign-up</small>
+        
+      </div>
+    </div>
+  </div>
+</div>

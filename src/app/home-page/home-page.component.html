@@ -1,0 +1,173 @@
+
+<header id="header" *ngIf="restaurantInfo">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1>{{restaurantInfo.restaurantName}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="features" class="text-center">
+  <div class="container">
+    <div class="section-title">
+      
+      <h2>Our Specials</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="features-item">
+          <h3>Chole Kulcha</h3>
+          <img src="./assets/img/specials/1.jpg" class="img-responsive" alt="">
+          <p>it contains chole and cheese kulcha</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="features-item">
+          <h3>Chinese Dhosa</h3>
+          <img src="./assets/img/specials/2.jpg" class="img-responsive" alt="">
+          <p>it contains noodles and cheese and mausur dhosa</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4" >
+        <div class="features-item">
+          <h3>Paneer Lavabdar</h3>
+          <img src="./assets/img/specials/3.jpg" class="img-responsive" alt="">
+          <p>it contains pannet and veg toppings</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 about-img"> </div>
+      <div class="col-xs-12 col-md-4 ">
+        <div class="about-text text-right">
+          <div class="section-title text-center">
+            <h2>Our Story</h2>
+          </div>
+          <p>It is a Restaurant View of Hotel Ashopalav</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Restaurant Menu Section -->
+<div id="restaurant-menu">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Menu</h2><br>
+      <button *ngIf="userInfo" class="btn btn-primary" (click)="showCart()">Show Cart</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Breakfast & Starters</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.breakfastAndStarters">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price">
+              <span *ngIf="userInfo">
+                <button (click)="addItem(obj)" class="text-primary">
+                    +                  
+                </button>
+                <button *ngIf="obj.cartCount" class="text-danger" (click)="removeItem(obj)">
+                    -                  
+                </button>
+              </span>
+              {{obj.price}} 
+              <br>
+              <p *ngIf="obj.cartCount">x{{obj.cartCount}}</p>
+
+            </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Main Course</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.mainCourse">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> 
+              <span *ngIf="userInfo">
+                <button (click)="addItem(obj)" class="text-primary">
+                    +                  
+                </button>
+                <button *ngIf="obj.cartCount" (click)="removeItem(obj)" class="text-danger">
+                    -                  
+                </button>
+              </span>
+              {{obj.price}} 
+              <br>
+              <p *ngIf="obj.cartCount">x{{obj.cartCount}}</p>
+            </div>
+            <div class="menu-item-description">
+              {{obj.indredients}} 
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Dinner</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.dinner">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> 
+              <span *ngIf="userInfo">
+                <button (click)="addItem(obj)" class="text-primary">
+                    +                  
+                </button>
+                <button *ngIf="obj.cartCount" class="text-danger" (click)="removeItem(obj)">
+                    -                  
+                </button>
+              </span>
+              {{obj.price}} 
+              <br>
+              <p *ngIf="obj.cartCount">x{{obj.cartCount}}</p>
+            </div>
+            <div class="menu-item-description">
+              {{obj.indredients}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Desserts</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.desserts">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price">
+              <span *ngIf="userInfo">
+                <button (click)="addItem(obj)" class="text-primary">
+                    +                  
+                </button>
+                <button *ngIf="obj.cartCount" class="text-danger" (click)="removeItem(obj)">
+                    -                  
+                </button>
+              </span>
+              {{obj.price}} 
+              <br>
+              <p *ngIf="obj.cartCount">x{{obj.cartCount}}</p>
+            </div>
+              
+            <div class="menu-item-description">
+              {{obj.indredients}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

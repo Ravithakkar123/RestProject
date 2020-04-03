@@ -1,0 +1,15 @@
+<div id="home">
+<nav class="navbar navbar-default fixed-top ">
+  
+  <div class="container"> 
+     <a href="#homepage" style="color: blanchedalmond;">Home</a>
+    <a href="#restaurant-menu" style="color:blanchedalmond;" >Select Restaurant</a>
+    <a href="#dish" style="color: blanchedalmond;" >Special dishes</a>
+    <a href="#contact" style="color: blanchedalmond;">Contact US</a>
+    <a *ngIf="!userInfo" style="color: blanchedalmond; cursor: pointer;"  routerLink='login'>Login</a>
+    <a *ngIf="userInfo" style="color: blanchedalmond; cursor: pointer;" (click)="myOrder()"> My orders </a>
+    <a *ngIf="userInfo" style="cursor: pointer; color: blanchedalmond;" (click)="logout()"> Logout</a>
+ </div>
+</nav>
+<router-outlet></router-outlet>
+</div>

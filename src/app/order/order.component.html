@@ -1,0 +1,93 @@
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1>FoodWoodz Restaurant</h1>
+            <p>Reservations: 9898989898</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Restaurant Menu Section -->
+<span *ngIf="myOrders">
+<div id="restaurant-menu" >
+	<div class="section-title text-center">
+			<h2>My Orders</h2>
+		</div>
+  <div class="container">
+	<ng-container *ngFor="let object of myOrders; let i = index">
+    <div class="section-title text-center" style="margin-bottom: 5px">
+    <p style="color: red">Order no. : {{i+1}}</p>	
+      <p>Time to Cook : {{object.timeToCookFood}} Minutes</p><br>
+      <p>Customer Name : {{object.userId.userName}}</p><br>
+      <p>Total Pay Value: {{object.payValue}}/- rs</p>
+      <!-- <button class="btn btn-primary" (click)="openModel()">Add Food item</button> -->
+    </div>
+    <!-- <div class="section-title text-center">
+    </div> -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Breakfast & Starters</h2>
+          <div class="menu-item" *ngFor="let obj of object.foodId">
+            <div class="menu-item-name" *ngIf="obj.foodId.foodCategory == 'breakfast and starters'">{{obj.foodId.foodName}}</div>
+            <div class="menu-item-price" *ngIf="obj.foodId.foodCategory == 'breakfast and starters'"> 				{{obj.foodId.price}} 
+            	<br>
+            	<p>Total items :  {{obj.totalItems}}</p>
+            </div>
+            <div class="menu-item-description" *ngIf="obj.foodId.foodCategory == 'breakfast and starters'"> {{obj.foodId.indredients}} </div>
+            <div class="menu-item-price" *ngIf="obj.foodId.foodCategory == 'breakfast and starters'"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Main Course</h2>
+          <div class="menu-item" *ngFor="let obj of object.foodId">
+            <div class="menu-item-name" *ngIf="obj.foodId.foodCategory == 'main course'">{{obj.foodId.foodName}}</div>
+            <div class="menu-item-price" *ngIf="obj.foodId.foodCategory == 'main course'"> {{obj.foodId.price}} <br>
+            	<p>Total items :  {{obj.totalItems}}</p></div>
+            <div class="menu-item-description" *ngIf="obj.foodId.foodCategory == 'main course'"> {{obj.foodId.indredients}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Dinner</h2>
+          <div class="menu-item" *ngFor="let obj of object.foodId">
+            <div class="menu-item-name" *ngIf="obj.foodId.foodCategory == 'dinner'">{{obj.foodId.foodName}}</div>
+            <div class="menu-item-price" *ngIf="obj.foodId.foodCategory == 'dinner'"> {{obj.foodId.price}} <br>
+            	<p>Total items :  {{obj.totalItems}}</p></div>
+            <div class="menu-item-description" *ngIf="obj.foodId.foodCategory == 'dinner'"> {{obj.foodId.indredients}} </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Desserts</h2>
+          <div class="menu-item" *ngFor="let obj of object.foodId">
+            <div class="menu-item-name" *ngIf="obj.foodId.foodCategory == 'desserts'">{{obj.foodId.foodName}}</div>
+            <div class="menu-item-price" *ngIf="obj.foodId.foodCategory == 'desserts'"> {{obj.foodId.price}} <br>
+            	<p>Total items :  {{obj.totalItems}}</p></div>
+            <div class="menu-item-description" *ngIf="obj.foodId.foodCategory == 'desserts'"> {{obj.foodId.indredients}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="text-danger">
+    </ng-container>
+  </div>
+</div>
+</span>
+
+
+
+
+

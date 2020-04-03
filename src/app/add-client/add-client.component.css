@@ -1,0 +1,41 @@
+.profile-image {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.profile-image img {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+.choose-avatar label {
+    background: linear-gradient(45deg, #0093E9, #36C2CF) !important;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.choose-avatar input[type="file"] {
+    display: none;
+}
+.client-details label {
+    color: #2DBAD3;
+}
+.client-details input.form-control ,select.form-control {
+    border: none;
+    border-bottom: 1px solid #dcdcdc !important;
+}
+.custom-select-option {
+    background: transparent;
+    padding: 10px 20px 10px 3px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none
+}
+.background-red{
+    background-color: #eccaca;
+}

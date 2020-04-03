@@ -1,0 +1,134 @@
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1>FoodWoodz Restaurant</h1>
+            <p>Reservations: 9898989898</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Restaurant Menu Section -->
+<div id="restaurant-menu">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Menu</h2><br>
+      <button class="btn btn-primary" (click)="openModel()">Add Food item</button>
+    </div>
+    <!-- <div class="section-title text-center">
+    </div> -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Breakfast & Starters</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.breakfastAndStarters">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Main Course</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.mainCourse">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Dinner</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.dinner">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Desserts</h2>
+          <div class="menu-item" *ngFor="let obj of foodArray.desserts">
+            <div class="menu-item-name">{{obj.foodName}}</div>
+            <div class="menu-item-price"> {{obj.price}} </div>
+            <div class="menu-item-description"> {{obj.indredients}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h4 class="modal-title">Add Item</h4>
+        <button type="button"  class="close btn-primary" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]="foodItem">
+            <div class="client-details">
+              <div class="row">
+
+                <div class="col-12">
+                  <label for="">Food Category</label>
+                  <div class="form-group">
+                    <select formControlName="foodCategory" name="foodCategory"  required class="form-control">
+                      <option disabled="true">Select Food Category</option>
+                      <option  value="breakfast and starters">BREAKFAST & STARTERS</option>
+                      <option value="main course">MAIN COURSE</option>
+                      <option value="dinner">DINNER</option>
+                      <option value="desserts">Desserts</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="">Food Name</label>
+                  <div class="form-group">
+                    <input type="text"  required formControlName="foodName" class="form-control" placeholder="Food Name">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="">Indredients</label>
+                  <div class="form-group">
+                    <input type="text"  id="indredients" required  formControlName="indredients" class="form-control" placeholder="Indredients">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="">Food Price</label>
+                  <div class="form-group">
+                    <input type="number"  id="price"  required formControlName="price"  class="form-control" placeholder="Food Price">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="">Time To Cook</label>
+                  <div class="form-group">
+                    <input type="number"   required formControlName="timeToCook" class="form-control" placeholder="Time to cook">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"  [disabled]="foodItem.invalid"  (click)="addItem(foodItem.value)" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

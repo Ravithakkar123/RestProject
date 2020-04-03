@@ -1,0 +1,61 @@
+
+<div class="login-page">
+  <!-- <h1>Welcome to Foodwoodzz </h1> -->
+  <div class="container">
+    <div class="row">
+      <div class="login-page-div text-center">
+        <h2 class="text-center mb-2">Register</h2>
+        <ng-container *ngIf="registerOptionValue == 'shop'">
+
+          <form [formGroup]="shopRegisterForm" autocomplete="off">
+            <div class="form-group">
+              <input type="text"  formControlName="restaurantName" [ngClass]="{ 'is-invalid':  s.restaurantName.errors }"  class="form-control" id="restaurantName" placeholder="resturantName">
+            </div>
+            <div class="form-group">
+              <input type="email" formControlName="email" [ngClass]="{ 'is-invalid':  s.email.errors }" class="form-control" id="email" placeholder="email">
+            </div>
+            <div class="form-group">
+              <input type="password"  formControlName="password" [ngClass]="{ 'is-invalid':  s.password.errors }"  class="form-control" id="password" placeholder="password">
+            </div>
+            <div class="form-group">
+              <input type="text"  formControlName="address" [ngClass]="{ 'is-invalid':  s.address.errors }"  class="form-control" id="address" placeholder="address">
+            </div>
+            <div class="form-group">
+              <input type="number"  formControlName="contactNo" [ngClass]="{ 'is-invalid':  s.contactNo.errors }"  class="form-control" id="contactNo" placeholder="contactNo">
+            </div>
+            <button class="btn btn-primary w-100 mt-sm-3" (click)="shopRegister(shopRegisterForm.value)"  [disabled]= "isDisable || shopRegisterForm.invalid" >Register Shop</button>
+          </form>
+          <small *ngIf="isError"  class="text-danger"  >{{errorMessage}}</small>
+        </ng-container>
+        <ng-container *ngIf="registerOptionValue == 'user'">
+          
+          <form [formGroup]="registerForm" autocomplete="off">
+            <div class="form-group">
+              <input type="text"  formControlName="userName" [ngClass]="{ 'is-invalid':  f.userName.errors }"  class="form-control" id="userName" placeholder="userName">
+            </div>
+            <div class="form-group">
+              <input type="email" formControlName="email" [ngClass]="{ 'is-invalid':  f.email.errors }" class="form-control" id="email" placeholder="email">
+            </div>
+            <div class="form-group">
+              <input type="password"  formControlName="password" [ngClass]="{ 'is-invalid':  f.password.errors }"  class="form-control" id="password" placeholder="password">
+            </div>
+             <!-- <div class="form-group">
+              <input type="date"  formControlName="dateOfBirth" [ngClass]="{ 'is-invalid':  f.dateOfBirth.errors }"  class="form-control" id="dateOfBirth" placeholder="dateOfBirth">
+            </div>  -->
+            <div class="form-group">
+              <input type="text"  formControlName="address" [ngClass]="{ 'is-invalid':  f.address.errors }"  class="form-control" id="address" placeholder="address">
+            </div>
+            <div class="form-group">
+              <input type="text"  formControlName="contactNo" [ngClass]="{ 'is-invalid':  f.contactNo.errors }"  class="form-control" id="contactNo" placeholder="contactNo">
+            </div>
+            <button class="btn btn-primary w-100 mt-sm-3" (click)="register(registerForm.value)"  [disabled]= "isDisable || registerForm.invalid" >Register User</button>
+          </form>
+          <small *ngIf="isError"  class="text-danger"  >{{errorMessage}}</small>
+        </ng-container>  
+        <button class="btn btn-primary w-100 mt-sm-3" *ngIf="registerOptionValue == 'shop' || !registerOptionValue" (click)="registerOption('user')">Register User</button>
+        <button class="btn btn-primary w-100 mt-sm-3" *ngIf="registerOptionValue == 'user' || !registerOptionValue" (click)="registerOption('shop')">Register Shop</button>
+        <small class="text-muted" style="cursor: pointer"  routerLink='/login'>Login</small>  
+      </div>
+    </div>
+  </div>
+</div>

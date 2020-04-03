@@ -1,0 +1,119 @@
+<div class="main-content">
+	<nav class="navbar navbar-top navbar-expand-md navbar-dark mb-0" id="navbar-main">
+		<div class="container-fluid">
+			<div class="col-xl-6 col-lg-6 float-left">
+				<div class="float-left">
+					<a class="h1 mb-0 text-white d-lg-inline-block">Create client</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="header btn-primary pb-8 pt-5 pt-md-8">
+		<div class="container-fluid">
+			<div class="header-body">
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid mt--7">
+		<div class="card client w-100 pb-2 p-3">
+			<div class="container">
+				<form [formGroup]="addClientForm">
+					<div class="row">
+						<div class="col-11 margin-auto text-center">
+							Select type:
+							<select formControlName="userType" [ngClass]="{ 'is-invalid':  f.userType.errors }" class="custom-select-option" (change)="getType($event)">
+								<option disabled="">Select Type</option>
+								<option>Individual</option>
+								<option>Company</option>
+							</select>
+						</div>
+						<div class="col-1 text-right margin-auto">
+							<button type="button" class="btn btn-primary"  (click)="addClient(addClientForm.value)" [disabled]="isDisable || addClientForm.invalid">Save</button>
+						</div>
+					</div>
+					<hr class="w-100">
+					<div class="container text-center margin-auto">
+						<div  class="profile-image mb-2">
+							<img *ngIf="previewUrl" [src]="previewUrl" alt="image">
+							<img *ngIf="!previewUrl" src="./assets/images/default-profile.png" alt="image">
+						</div>
+						
+						<div class="choose-avatar">
+							<label for="avatar">Choose Avatar</label>
+							<input type="file" (change)="uploadFile($event)" accept='image/*' name="" id="avatar" class="btn btn-primary">
+						</div>
+					</div>
+					<div class="client-details">
+						<div class="row">
+							<div class="col-12">
+								<label for="">Name</label>
+								<div class="form-group">
+									<input type="text" formControlName="name" [ngClass]="{ 'is-invalid':  f.name.errors }" class="form-control" placeholder="Enter Name">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Contact</label>
+								<div class="form-group">
+									<input type="text" (input)="checkValidation($event, 'contact')" id="contact" formControlName="contactNo" [ngClass]="{ 'is-invalid':  f.contactNo.errors }" class="form-control" placeholder="Enter Number">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Email</label>
+								<div class="form-group">
+									<input type="email" id="email" (input)="checkValidation($event, 'email')" formControlName="email" [ngClass]="{ 'is-invalid':  f.email.errors }" class="form-control" placeholder="Enter email">
+								</div>
+							</div>
+							<div *ngIf="typeFlag" class="col-12">
+								<label for="">Company Name</label>
+								<div class="form-group">
+									<input type="text" formControlName="companyName" [ngClass]="{ 'is-invalid':  f.companyName.errors }" class="form-control" placeholder="Enter Company Name">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Street1</label>
+								<div class="form-group">
+									<input  type="text" formControlName="street1" [ngClass]="{ 'is-invalid':  f.street1.errors }" class="form-control" placeholder="Enter Street1">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Street2</label>
+								<div class="form-group">
+									<input  id="street2" type="text" formControlName="street2" [ngClass]="{ 'is-invalid':  f.street2.errors }" class="form-control" placeholder="Enter Street2">
+									
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">City</label>
+								<div class="form-group">
+									<input type="text" id="city" (input)="checkValidation($event, 'city')" formControlName="city" [ngClass]="{ 'is-invalid':  f.city.errors }" class="form-control" placeholder="Enter City">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Country</label>
+								<div class="form-group">
+									<input id="country" (input)="checkValidation($event, 'country')" type="text" formControlName="country" [ngClass]="{ 'is-invalid':  f.country.errors }" class="form-control" placeholder="Enter Country">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Pincode</label>
+								<div class="form-group">
+									<input type="text"  id="pincode" formControlName="pincode" (input)="checkValidation($event, 'pincode')" [ngClass]="{ 'is-invalid':  f.pincode.errors }" class="form-control" placeholder="Enter Pincode">
+									
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label for="">Currency</label>
+								<div class="form-group">
+									<select formControllName="currency" (change)="selectCurrency($event.target.value)" id="" class="form-control">
+										<option  disabled>Currency</option>
+										<option *ngFor="let curr of currency" [ngValue]="curr">{{curr}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

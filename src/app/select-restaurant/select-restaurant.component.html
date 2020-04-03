@@ -1,0 +1,104 @@
+<header id="homepage">
+	<div class="intro">
+		<div class="overlay">
+			<div class="container">
+				<div class="row">
+					<div class="intro-text">
+						<h1>FoodWoodz Restaurant</h1>
+						<p>Reservations: 9898989898</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div id="restaurant-menu">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+				<div class="menu-section">
+					<h2 class="menu-section-title">Select Restaurant</h2>
+					<div class="menu-item " *ngFor="let rest of allRestaurant">
+						<div class="menu-item-name " [routerLink]="['home', rest._id]" style="text-align: center">{{rest.restaurantName}}	</div>
+						<!-- <div class="menu-item-price"> $9 </div> -->
+						<div class="menu-item-description" style="text-align: center; width: 100%"> {{rest.address}} - {{rest.contactNo}}</div>
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div id="dish">
+	<div class="container-fluid">
+	  <div class="row">
+		<!-- <div class="col-xs-6 col-md-3">
+		  <div class="gallery-item"> <img src="./assets/img/gallery/01.jpg" class="img-responsive" alt=""></div>
+		</div> -->
+		<div class="col-xs-6 col-md-4">
+		  <div class="gallery-item"> <img src="./assets/img/gallery/02.jpg" class="img-responsive" alt=""></div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+		  <div class="gallery-item"> <img src="./assets/img/gallery/03.jpg" class="img-responsive" alt=""></div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+		  <div class="gallery-item"> <img src="./assets/img/gallery/04.jpg" class="img-responsive" alt=""></div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+<div id="contact" style="padding-top: 20px;" class="text-center">
+	
+	<div class="container">
+	  <div class="section-title ">
+		<h3>Send us a message</h3>
+	  </div>
+	  <div class=	"col-md-8 col-md-offset-2"  style="margin-left:200px ;" >
+		<form name="sentMessage" id="contactForm" novalidate>
+		  <div class="row">
+			<div class="col-md-6">
+			  <div class="form-group">
+				<input type="text" id="name" class="form-control" placeholder="Name" required="required">
+				<p class="help-block text-danger"></p>
+			  </div>
+			</div>
+			<div class="col-md-6">
+			  <div class="form-group">
+				<input type="email" id="email" class="form-control" placeholder="Email" required="required">
+				<p class="help-block text-danger"></p>
+			  </div>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+			<p class="help-block text-danger"></p>
+		  </div>
+		  <div id="success"></div>
+		  <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+		</form>
+	  </div>
+	</div>
+  </div>
+  
+  <footer id="footer">
+	<div class="container text-center row">
+	  <div class="col-md-6">
+		<strong>Copyright &copy; 2020</strong>  FoodWoodz Restaurant. All rights reserved.
+	  </div>
+	  <div class="col-md-6">
+		<div class="social ">
+		  <ul>
+			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+  
+		  </ul>
+		</div>
+	  </div>
+	</div>
+  </footer> 

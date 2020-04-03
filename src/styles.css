@@ -1,0 +1,86 @@
+/*common css start*/
+body{-webkit-font-smoothing: antialiased;-moz-font-smoothing: antialiased;-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+h1,h2,h3,h4,h5,h6,p{margin: 0; font-family: 'Montserrat', sans-serif;}
+ul{padding: 0; margin: 0;}
+a{display: inline-block; text-decoration: none!important; outline: none!important;}
+/*common css end*/
+
+/* bootstrap common css */
+.btn-primary {
+    background: linear-gradient(45deg, #0093E9, #36C2CF) !important;
+    outline: none !important;
+    border: none !important;
+}
+.text-color-red{
+	color: #FE4365 !important;
+}
+.card-radius-15{
+	border-radius: 15px;
+}
+.main-content {
+    margin-left: 250px;
+}
+.card{
+    box-shadow: 3px 3px 10px #92929242;
+}
+/* header css start */
+
+.btn-add {
+    border-radius: 15px;
+    background-color: #0093E9;
+    color: white
+}
+
+input.form-control.w-100.search-input {
+    background-color: transparent;
+    border-bottom: 1px solid #fff !important;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    padding-left: 40px;
+}
+
+input.form-control.w-100.search-input::placeholder {
+    color: #f7eded;
+}
+
+img.search-icon {
+    position: absolute;
+    left: 1%;
+    width: 20px;
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+.form-group.search {
+    position: relative;
+}
+.button-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-div button {
+    border-radius: 50%;
+    padding: 15px;
+}
+
+
+/* header css end */
+
+@media(max-width:767px){
+    .main-content {
+        margin-left: 0;
+    }
+    .card-radius-15{
+        border-radius: 5px;
+    }
+    .col-lg-6 .form-group.search {
+        display: none;
+    }
+}
+.pionter{
+    cursor: pointer
+}

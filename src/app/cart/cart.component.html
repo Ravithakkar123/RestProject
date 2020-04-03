@@ -1,0 +1,209 @@
+<header id="header" *ngIf="currentUser">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1>{{currentUser.userName}}'s Cart</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Restaurant Menu Section -->
+<div id="restaurant-menu" *ngIf="allRestaurants">
+	<div class="container">
+		<div class="section-title text-center">
+			<h2>Cart</h2>
+		</div>
+		<ng-container *ngFor="let obj of allRestaurants; let i = index">
+			<h4>{{obj.restaurantId[0].restaurantName}}</h4><br>
+			<button class="btn btn-primary" (click)="getPaymentInfo(obj.restaurantId[0]._id)" style="text-align: center;">OrderNow </button>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<div class="menu-section">
+						<h2 class="menu-section-title">Breakfast & Starters</h2>
+						<div class="menu-item" *ngFor="let obj1 of obj.foodArray.breakfastAndStarters">
+							<div class="menu-item-name">{{obj1.foodId.foodName}}</div>
+							<div class="menu-item-price">
+								<span *ngIf="currentUser">
+									<button (click)="addItem(obj1.foodId)" class="text-primary">
+										+                  
+									</button>
+									<button *ngIf="obj1.totalItems" class="text-danger" (click)="removeItem(obj1.foodId)">
+										-                  
+									</button>
+								</span>
+								{{obj1.foodId.price}} 
+								<br>
+								<p *ngIf="obj1.totalItems">x{{obj1.totalItems}}</p>
+							</div>
+							<div class="menu-item-description"> {{obj1.foodId.indredients}} </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="menu-section">
+						<h2 class="menu-section-title">Main Course</h2>
+						<div class="menu-item" *ngFor="let obj1 of obj.foodArray.mainCourse">
+							<div class="menu-item-name">{{obj1.foodId.foodName}}</div>
+							<div class="menu-item-price">
+								<span *ngIf="currentUser">
+									<button (click)="addItem(obj1.foodId)" class="text-primary">
+										+                  
+									</button>
+									<button *ngIf="obj1.totalItems" class="text-danger" (click)="removeItem(obj1.foodId)">
+										-                  
+									</button>
+								</span>
+								{{obj1.foodId.price}} 
+								<br>
+								<p *ngIf="obj1.totalItems">x{{obj1.totalItems}}</p>
+							</div>
+							<div class="menu-item-description"> {{obj1.foodId.indredients}} </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<div class="menu-section">
+						<h2 class="menu-section-title">Dinner</h2>
+						<div class="menu-item" *ngFor="let obj1 of obj.foodArray.dinner">
+							<div class="menu-item-name">{{obj1.foodId.foodName}}</div>
+							<div class="menu-item-price">
+								<span *ngIf="currentUser">
+									<button (click)="addItem(obj1.foodId)" class="text-primary">
+										+                  
+									</button>
+									<button *ngIf="obj1.totalItems" class="text-danger" (click)="removeItem(obj1.foodId)">
+										-                  
+									</button>
+								</span>
+								{{obj1.foodId.price}} 
+								<br>
+								<p *ngIf="obj1.totalItems">x{{obj1.totalItems}}</p>
+							</div>
+							<div class="menu-item-description"> {{obj1.foodId.indredients}} </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="menu-section">
+						<h2 class="menu-section-title">Desserts</h2>
+						<div class="menu-item" *ngFor="let obj1 of obj.foodArray.desserts">
+							<div class="menu-item-name">{{obj1.foodId.foodName}}</div>
+							<div class="menu-item-price">
+								<span *ngIf="currentUser">
+									<button (click)="addItem(obj1.foodId)" class="text-primary">
+										+                  
+									</button>
+									<button *ngIf="obj1.totalItems" class="text-danger" (click)="removeItem(obj1.foodId)">
+										-                  
+									</button>
+								</span>
+								{{obj1.foodId.price}} 
+								<br>
+								<p *ngIf="obj1.totalItems">x{{obj1.totalItems}}</p>
+							</div>
+							<div class="menu-item-description"> {{obj1.foodId.indredients}} </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+
+	</div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="myModal" >
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header" >
+				<h4 class="modal-title">Payment Info</h4><br>
+				<p class="text-danger">Payment information will not be changed later</p>
+				<button type="button"  class="close btn-primary" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<form [formGroup]="paymentForm">
+						<div class="client-details">
+							<div class="row">
+								<div class="col-md-12">
+									<label for="">Account Number</label>
+									<div class="form-group">
+										<input type="text"  id="indredients" required  formControlName="accountNumber" class="form-control" placeholder=" Account Number">
+									</div>
+								</div>
+								<div class="col-12">
+									<label for="">Account Code</label>
+									<div class="form-group">
+										<input type="number"  required formControlName="accountCode" class="form-control" placeholder="Account Code">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary"  [disabled]="paymentForm.invalid"  (click)="addPaymentInfo(paymentForm.value)" data-dismiss="modal">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="orderModel">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header" >
+				<h4 class="modal-title">Payment Info</h4><br>
+				<button type="button"  class="close btn-primary" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<form [formGroup]="paymentConfromForm">
+						<div class="client-details">
+							<div class="row">
+								<div class="col-md-12">
+									<label for="">Restauant Unique Id</label>
+									<div class="form-group">
+										<input type="text"  id="indredients" required  formControlName="restaurantUniqueId" class="form-control" placeholder="Restaurant Unique Id">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<label for="">Account Number</label>
+									<div class="form-group">
+										<input type="text"  id="indredients" required  formControlName="accountNumber" class="form-control" placeholder=" Account Number">
+									</div>
+								</div>
+								<div class="col-12">
+									<label for="">Account Code</label>
+									<div class="form-group">
+										<input type="text"  required formControlName="accountCode" class="form-control" placeholder="Account Code">
+									</div>
+								</div>
+								<div class="col-12">
+									<label for="">Total Amout</label>
+									<div class="form-group">
+										<input type="text" *ngIf="finalOrderObject" class="form-control" readonly value="{{finalOrderObject.payValue}}">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary"  [disabled]="paymentConfromForm.invalid"  (click)="orderFInal(paymentConfromForm.value)" data-dismiss="modal">Order</button>
+			</div>
+		</div>
+	</div>
+</div>

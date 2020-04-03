@@ -1,0 +1,32 @@
+.navbar-vertical.navbar-expand-md.fixed-left {
+    padding-top: 0;
+}
+.background-image-sidenav{
+    background-image: url("../assets/images/sidenav-bgimg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 250px;
+    padding: 50px 20px;
+    border-bottom: 10px solid #3ACCE1;
+}
+.profile-photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.profile-photo img{
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+.background-image-sidenav h2 {
+    color: darkgray;
+}
+.background-image-sidenav span{
+    color: #3ACCE1;
+    font-size: 12px;
+    word-break: break-all;
+    line-height: 10px;
+}
