@@ -96,7 +96,20 @@ cartService.removeExistingFoodFromCart = (body) => {
 		})
 	});	
 }
-
+orderService.clearCart = (body) => {
+	return new Promise((resolve, reject) => {
+		cartModel.deleteMany({usrId: ObjectId(body.id)},{new: true,  upsert: true })
+		.exec((err, deletedFoodItems) => {
+			if(err){
+				console.log("err =========>", err)
+				reject(err)
+			}
+			else{
+				resolve(updatedFoodItem);
+			}		
+		})
+	});	
+}
 
 
 

@@ -21,6 +21,8 @@ router.get('/get-payment-record/:id', restaurantController.checkPaymentDetails);
 router.post('/add-payment-record', restaurantController.addPaymentDetials);
 
 router.post('/add-order', restaurantController.addOrder);
+
+router.post('/get-order-by-id', restaurantController.getOrderById);
 // router.post('/signup-shop', userController.signUpShop);
 // router.post('/login-user' , userController.loginUser);
 // router.post('/login-shop' , userController.loginShop);

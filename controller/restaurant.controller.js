@@ -134,6 +134,10 @@ restaurantController.getCartById = (req, res) => {
 	})
 }
 
+// restaurantController.clearCart = (req, res) => {
+	
+// }
+
 restaurantController.checkPaymentDetails = (req, res) => {
 	orderService.getPaymentRecord(req.params.id)
 	.then(fullFilled => {
@@ -160,5 +164,16 @@ restaurantController.addOrder = (req, res) => {
 		res.send(err)
 	})
 };
+
+
+restaurantController.getOrderById = (req, res) => {
+	orderService.getOrderById(req.body)
+	.then(fullFilled => {
+		res.send(fullFilled)
+	}, err => {
+		res.send(err)
+	});
+}
+
 
 module.exports = restaurantController;
