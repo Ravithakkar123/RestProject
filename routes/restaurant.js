@@ -12,6 +12,9 @@ router.get('/get-restaurant-by-id/:id', restaurantController.getRestaurantById);
 router.get('/get-restaurant-food-by-id/:id', restaurantController.RestaurantFoodById);
 
 router.post('/add-food-item', restaurantController.addFoodItemById)
+router.post('/edit-food-item-by-id', restaurantController.editFoodItem)
+router.delete('/delete-food-item-by-id/:id', restaurantController.removeFoodItem)
+
 
 router.post('/get-cart-by-id', restaurantController.getCartById);
 router.post('/add-food-item-to-cart', restaurantController.addToCart);

@@ -51,7 +51,6 @@ restaurantController.RestaurantFoodById = (req, res)=>{
 
 restaurantController.addFoodItemById = (req, res) => {
 	console.log("req body of add food item ====> ", req.body);
-
 	let newFoodItem = new foodModel(req.body)
 	newFoodItem.save((err, savedFood)=>{
 		if(err){
@@ -62,6 +61,31 @@ restaurantController.addFoodItemById = (req, res) => {
 		}
 	});
 }
+
+restaurantController.editFoodItem = (req, res) => {
+	console.log("restaurant ID =========> ", req.body)
+	foodModel.findOneAndUpdate({_id : req.body._id}, req.body, {upsert: true, new:true})
+	.exec((err, updatedItem)=> {
+		if(err){
+			res.send(err)
+		}
+		else{
+			res.send(updatedItem);
+		}
+	});
+}
+restaurantController.removeFoodItem = (req, res) =>{
+	foodModel.deleteOne({_id : req.params.id})
+	.exec((err, deletedItem)=> {
+		if(err){
+			res.send(err)
+		}
+		else{
+			res.send(deletedItem);
+		}
+	});	
+}
+
 
 restaurantController.addToCart = (req, res) => {
 	console.log("req body of add food item in Cart ====> ", req.body);
